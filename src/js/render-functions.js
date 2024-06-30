@@ -1,6 +1,7 @@
 import iziToast from "izitoast"
 import "izitoast/dist/css/iziToast.min.css"
 
+export let markup = '';
 export const refs = {
     form: document.querySelector('.form'),
     input: document.querySelector('.input'),
@@ -11,7 +12,7 @@ export const refs = {
 };
 
 export async function imagesTemplate(imagesObj) { 
-    const markup = imagesObj.map(image => {
+    let markup = imagesObj.map(image => {
         return `<li class="gallery-item">
         <a class="gallery-link"
         href="${image.largeImageURL}">
