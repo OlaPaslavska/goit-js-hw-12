@@ -3,7 +3,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import { getImages } from './js/pixabay-api';
-import {imagesTemplate, showLoader, hideLoader, showLoadMore, hideLoadMore, checkEndPages,  skipOldElement} from './js/render-functions';
+import {imagesTemplate, showLoader, hideLoader, showLoadMore, hideLoadMore, skipOldElement} from './js/render-functions';
 
   export const refs = {
     form: document.querySelector('.form'),
@@ -117,7 +117,8 @@ refs.loadMoreBtn.addEventListener('click', async () => {
       hideLoader();
       showLoadMore();
       
-
+    checkEndPages(currentPage, maxPage);
+    skipOldElement();
   } catch (error) {
     refs.gallery.innerHTML = ' ';
 
