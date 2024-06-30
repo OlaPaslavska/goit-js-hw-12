@@ -24,7 +24,7 @@ refs.form.addEventListener('submit', async e => {
   currentPage = 1;
 
   hideLoadMore();
-
+// Очищення галереї перед новими результатами
   if (inputValue === '') {
     refs.gallery.innerHTML = ' ';
     iziToast.warning({
@@ -87,7 +87,8 @@ refs.loadMoreBtn.addEventListener('click', async () => {
   try {
     currentPage++;
 
-    const data = await getImages(inputValue, currentPage, perPage);
+      const data = await getImages(inputValue, currentPage, perPage);
+      
 
     if (data.hits.length !== 0) {
       imagesTemplate(data.hits);
