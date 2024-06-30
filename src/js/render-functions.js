@@ -45,7 +45,7 @@ export async function imagesTemplate(imagesObj) {
 </li>`;
     })
         .join('');
-    refs.gallery.innerHTML('beforeend', markup);
+    refs.gallery.insertAdjacentHTML('beforeend', markup);
 }
 // Ця функція показує завантажувач, видаляючи клас 'hidden' з елементу завантажувача (refs.loader)
 
