@@ -3,7 +3,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import { getImages } from './js/pixabay-api';
-import {
+import {refs,
   imagesTemplate, showLoader, hideLoader, showLoadMore, hideLoadMore, checkEndPages,} from './js/render-functions';
 
 let inputValue = '';
