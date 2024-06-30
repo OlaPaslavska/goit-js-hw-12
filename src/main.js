@@ -19,11 +19,22 @@ let currentPage = 1;
 let perPage = 15;
 let maxPage = 1;
 
+
 const lightbox = new SimpleLightbox('.gallery a', {
   captions: true,
   captionsData: 'alt',
   captionDelay: 250,
 });
+function skipOldElement(x = 0, y = 0) {
+  const liEl = refs.gallery.children[0];
+  const height = liEl.getBoundingClientRect().height;
+
+  window.scrollBy({
+    top: height * 2,
+    left: y,
+    behavior: 'smooth',
+  });
+}
 
 refs.form.addEventListener('submit', async (e) => {
     e.preventDefault();
