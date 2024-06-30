@@ -25,7 +25,7 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
 });
 
-refs.form.addEventListener('submit', async e => {
+refs.form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
      inputValue = refs.input.value.trim();
