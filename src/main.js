@@ -18,7 +18,8 @@ const lightbox = new SimpleLightbox('.gallery a', {
 });
 
 refs.form.addEventListener('submit', async e => {
-  e.preventDefault();
+    e.preventDefault();
+    
   inputValue = e.target.elements.text.value.trim();
   currentPage = 1;
 
