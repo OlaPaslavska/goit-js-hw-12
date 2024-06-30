@@ -4,7 +4,7 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import { getImages } from './js/pixabay-api';
 import {refs,
-  imagesTemplate, showLoader, hideLoader, showLoadMore, hideLoadMore, checkEndPages,} from './js/render-functions';
+  imagesTemplate, showLoader, hideLoader, showLoadMore, hideLoadMore, checkEndPages} from './js/render-functions';
 
 let inputValue = '';
 let currentPage = 1;
