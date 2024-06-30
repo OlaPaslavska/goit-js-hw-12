@@ -25,10 +25,10 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
 });
 
-refs.form.addEventListener('submit', async e => {
+form.addEventListener('submit', async e => {
     e.preventDefault();
     
-    inputValue = e.target.elements.input.value.trim();
+    inputValue = input.value.trim();
   currentPage = 1;
 
   hideLoadMore();
