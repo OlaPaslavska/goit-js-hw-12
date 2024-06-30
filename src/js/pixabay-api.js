@@ -5,7 +5,6 @@ import "izitoast/dist/css/iziToast.min.css"
 
 const articlesApi = axios.create({
     baseURL: 'https://pixabay.com/',
-    apiKey : '44654317-b43c54b885daf7a418bb31fe3',
 });
 
 export async function getImages(inputValue, currentPage, perPage) {
@@ -21,8 +20,7 @@ export async function getImages(inputValue, currentPage, perPage) {
         };
         const res = await articlesApi.get('api/', { params });
         return res.data;
-    }
-    catch (error) {
+    }catch (error) {
         iziToast.error({
             title: 'Error',
             message: `${err}`,
