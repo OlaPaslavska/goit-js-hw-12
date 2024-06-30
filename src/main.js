@@ -28,7 +28,7 @@ const lightbox = new SimpleLightbox('.gallery a', {
 refs.form.addEventListener('submit', async e => {
     e.preventDefault();
     
-    inputValue = refs.input.value.trim();
+    inputValue = e.target.elements.input.value.trim();
   currentPage = 1;
 
   hideLoadMore();
