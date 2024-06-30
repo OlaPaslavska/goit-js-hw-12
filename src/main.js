@@ -3,8 +3,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import { getImages } from './js/pixabay-api';
-import {refs,
-  imagesTemplate, showLoader, hideLoader, showLoadMore, hideLoadMore, checkEndPages} from './js/render-functions';
+import {imagesTemplate, showLoader, hideLoader, showLoadMore, hideLoadMore, checkEndPages} from './js/render-functions';
 
   export const refs = {
     form: document.querySelector('.form'),
