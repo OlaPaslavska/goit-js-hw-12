@@ -85,13 +85,13 @@ export function checkEndPages(currentPage, maxPage) {
     showLoadMore();
   }
 }
-export function skipOldElement(x = 0, y = 0) {
-  const liEl = refs.gallery.children[0];
-  const height = liEl.getBoundingClientRect().height;
+// export function skipOldElement(x = 0, y = 0) {
+//   const liEl = refs.gallery.children[0];
+//   const height = liEl.getBoundingClientRect().height;
 
-  window.scrollBy({
-    top: height * 2,
-    left: y,
-    behavior: 'smooth',
-  });
-}
+//   window.scrollBy({
+//     top: height * 2,
+//     left: y,
+//     behavior: 'smooth',
+//   });
+// }

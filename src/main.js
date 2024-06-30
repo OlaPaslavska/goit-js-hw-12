@@ -100,13 +100,24 @@ refs.loadMoreBtn.addEventListener('click', async () => {
       const data = await getImages(inputValue, currentPage, perPage);
       
 
-    if (data.hits.length !== 0) {
+      if (data.hits.length == 0 || currentPage >= maxPage) {
+          
+        iziToast.info({
+        title: 'Info',
+        message: "We're sorry, but you've reached the end of search results.",
+        position: 'topCenter',
+        timeout: 5000
+      });
+      hideLoader();
+      hideLoadMore();
+      return;
+    }
       imagesTemplate(data.hits);
       lightbox.refresh();
       hideLoader();
-    }
-    checkEndPages(currentPage, maxPage);
-    skipOldElement();
+      showLoadMore();
+      
+
   } catch (error) {
     refs.gallery.innerHTML = ' ';
 
