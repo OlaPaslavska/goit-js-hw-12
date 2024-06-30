@@ -10,7 +10,7 @@ export const refs = {
       loadMoreBtn: document.querySelector('.load-more-btn'),
 };
 
-export async function imagesTemplate(imagesObj) {
+export async function imagesTemplate(imagesObj) { 
     const markup = imagesObj.map(image => {
         return `<li class="gallery-item">
         <a class="gallery-link"

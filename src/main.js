@@ -6,6 +6,15 @@ import { getImages } from './js/pixabay-api';
 import {refs,
   imagesTemplate, showLoader, hideLoader, showLoadMore, hideLoadMore, checkEndPages} from './js/render-functions';
 
+  export const refs = {
+    form: document.querySelector('.form'),
+    input: document.querySelector('.input'),
+    button: document.querySelector('button'),
+    gallery: document.querySelector('.gallery'),
+    loader: document.querySelector('.loader'),
+      loadMoreBtn: document.querySelector('.load-more-btn'),
+};
+
 let inputValue = '';
 let currentPage = 1;
 let perPage = 15;
