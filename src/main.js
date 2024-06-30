@@ -3,7 +3,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import { getImages } from './js/pixabay-api';
-import {imagesTemplate, showLoader, hideLoader, showLoadMore, hideLoadMore, checkEndPages} from './js/render-functions';
+import {imagesTemplate, showLoader, hideLoader, showLoadMore, hideLoadMore, checkEndPages,  skipOldElement} from './js/render-functions';
 
   export const refs = {
     form: document.querySelector('.form'),
@@ -25,16 +25,7 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
 });
-function skipOldElement(x = 0, y = 0) {
-  const liEl = refs.gallery.children[0];
-  const height = liEl.getBoundingClientRect().height;
 
-  window.scrollBy({
-    top: height * 2,
-    left: y,
-    behavior: 'smooth',
-  });
-}
 
 refs.form.addEventListener('submit', async (e) => {
     e.preventDefault();
