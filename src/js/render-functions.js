@@ -72,8 +72,8 @@ export function hideLoadMore() {
 }
 
 // Ця функція перевіряє, чи поточна сторінка (currentPage) перевищує або дорівнює максимальній сторінці (maxPage)
-export function checkEndPages(currentPage, maxPage) {
-  if (currentPage >= maxPage) {
+export function checkEndPages(currentPage, maxPage, perPage) {
+  if (currentPage >= maxPage || data.hits.length < perPage) {
     hideLoadMore();
 
     if (maxPage) {
