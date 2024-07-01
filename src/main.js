@@ -32,13 +32,7 @@ refs.form.addEventListener('submit', async (e) => {
     
      inputValue = refs.input.value.trim();
   currentPage = 1;
-//  нове для видалення
-    hideLoadMore();
-    if (currentPage >= maxPage || data.hits.length < perPage) {
-    hideLoadMore();
-} else {
-    showLoadMore();
-}
+
 // Очищення галереї перед новими результатами
   if (inputValue === '') {
     refs.gallery.innerHTML = ' ';
