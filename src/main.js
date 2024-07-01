@@ -123,7 +123,7 @@ refs.loadMoreBtn.addEventListener('click', async () => {
     }
     //   showLoadMore();
       
-    // checkEndPages(currentPage, maxPage);
+    checkEndPages(currentPage, maxPage);
     // skipOldElement();
   } catch (error) {
     refs.gallery.innerHTML = ' ';
