@@ -91,11 +91,11 @@ refs.form.addEventListener('submit', async (e) => {
 });
 
 refs.loadMoreBtn.addEventListener('click', async () => {
-  hideLoadMore();
+//   hideLoadMore();
   showLoader();
-
+ currentPage++;
   try {
-    currentPage++;
+    // currentPage++;
 
       const data = await getImages(inputValue, currentPage, perPage);
       
@@ -132,4 +132,19 @@ refs.loadMoreBtn.addEventListener('click', async () => {
       position: 'topRight',
     });
   }
+    // Ця функція перевіряє, чи поточна сторінка (currentPage) перевищує або дорівнює максимальній сторінці (maxPage)
+ function checkEndPages(currentPage, maxPage) {
+  if (currentPage >= maxPage) {
+    hideLoadMore();
+
+    if (maxPage) {
+      iziToast.info({
+        title: 'The end!',
+        message: "We're sorry, but you've reached the end of search results.",
+      });
+    }
+  } else {
+    showLoadMore();
+  }
+}
 });
