@@ -110,17 +110,20 @@ refs.loadMoreBtn.addEventListener('click', async () => {
         position: 'topCenter',
         timeout: 5000
       });
-      hideLoader();
+    //   hideLoader();
       hideLoadMore();
       return;
     }
-    //   imagesTemplate(data.hits);
-    //   lightbox.refresh();
-    //   hideLoader();
+      imagesTemplate(data.hits);
+      lightbox.refresh();
+      hideLoader();
+      if (currentPage < maxPage) {
       showLoadMore();
+    }
+    //   showLoadMore();
       
-    checkEndPages(currentPage, maxPage);
-    skipOldElement();
+    // checkEndPages(currentPage, maxPage);
+    // skipOldElement();
   } catch (error) {
     refs.gallery.innerHTML = ' ';
 
