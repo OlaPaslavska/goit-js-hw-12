@@ -31,7 +31,7 @@ refs.form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
      inputValue = refs.input.value.trim();
-  currentPage = 1;
+//   currentPage = 1;
 
 // Очищення галереї перед новими результатами
   if (inputValue === '') {
