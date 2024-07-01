@@ -32,8 +32,13 @@ refs.form.addEventListener('submit', async (e) => {
     
      inputValue = refs.input.value.trim();
   currentPage = 1;
-
-  hideLoadMore();
+//  нове для видалення
+    hideLoadMore();
+    if (currentPage >= maxPage || data.hits.length < perPage) {
+    hideLoadMore();
+} else {
+    showLoadMore();
+}
 // Очищення галереї перед новими результатами
   if (inputValue === '') {
     refs.gallery.innerHTML = ' ';
@@ -99,6 +104,8 @@ refs.loadMoreBtn.addEventListener('click', async () => {
 
       const data = await getImages(inputValue, currentPage, perPage);
       
+      // Обрахування максимальної кількості сторінок
+     maxPage = Math.ceil(data.totalHits / perPage);
 
       if (data.hits.length == 0 || currentPage >= maxPage) {
           imagesTemplate(data.hits);
