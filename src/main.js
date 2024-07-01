@@ -90,77 +90,43 @@ refs.form.addEventListener('submit', async (e) => {
   }
 });
 
-// refs.loadMoreBtn.addEventListener('click', async () => {
-//   hideLoadMore();
-//   showLoader();
-//  currentPage++;
-//   try {
-//     // currentPage++;
-
-//       const data = await getImages(inputValue, currentPage, perPage);
-      
-
-//       if (data.hits.length == 0 || currentPage >= maxPage) {
-//           imagesTemplate(data.hits);
-//            lightbox.refresh();
-//       hideLoader();
-//         iziToast.info({
-//         title: 'Info',
-//         message: "We're sorry, but you've reached the end of search results.",
-//         position: 'topCenter',
-//         timeout: 5000
-//       });
-//     //   hideLoader();
-//       hideLoadMore();
-//       return;
-//     }
-//       imagesTemplate(data.hits);
-//       lightbox.refresh();
-//       hideLoader();
-//       if (currentPage < maxPage) {
-//       showLoadMore();
-//     }
-//     //   showLoadMore();
-      
-//     // checkEndPages(currentPage, maxPage);
-//     // skipOldElement();
-//   } catch (error) {
-//     refs.gallery.innerHTML = ' ';
-
-//     iziToast.error({
-//       title: 'Error',
-//       message: `${error}`,
-//       layout: 2,
-//       displayMode: 'once',
-//       backgroundColor: '#ef4040',
-//       progressBarColor: '#B51B1B',
-//       position: 'topRight',
-//     });
-//   }
-
-// });
 refs.loadMoreBtn.addEventListener('click', async () => {
+  hideLoadMore();
   showLoader();
-
+ currentPage++;
   try {
-    currentPage++;
-    const data = await getImages(inputValue, currentPage, perPage);
+    // currentPage++;
 
-    if (data.hits.length === 0 || currentPage >= maxPage) {
-      hideLoadMore();
-      iziToast.info({
+      const data = await getImages(inputValue, currentPage, perPage);
+      
+
+      if (data.hits.length == 0 || currentPage >= maxPage) {
+          imagesTemplate(data.hits);
+           lightbox.refresh();
+      hideLoader();
+        iziToast.info({
         title: 'Info',
         message: "We're sorry, but you've reached the end of search results.",
         position: 'topCenter',
         timeout: 5000
       });
-    } else {
+    //   hideLoader();
+      hideLoadMore();
+      return;
+    }
       imagesTemplate(data.hits);
       lightbox.refresh();
+      hideLoader();
+      if (currentPage < maxPage) {
+      showLoadMore();
     }
-
-    hideLoader();
+    //   showLoadMore();
+      
+    // checkEndPages(currentPage, maxPage);
+    // skipOldElement();
   } catch (error) {
+    refs.gallery.innerHTML = ' ';
+
     iziToast.error({
       title: 'Error',
       message: `${error}`,
@@ -170,11 +136,6 @@ refs.loadMoreBtn.addEventListener('click', async () => {
       progressBarColor: '#B51B1B',
       position: 'topRight',
     });
-  } finally {
-    if (currentPage >= maxPage) {
-      hideLoadMore();
-    } else {
-      showLoadMore();
-    }
   }
+
 });
