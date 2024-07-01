@@ -91,7 +91,7 @@ refs.form.addEventListener('submit', async (e) => {
 });
 
 refs.loadMoreBtn.addEventListener('click', async () => {
-//   hideLoadMore();
+  hideLoadMore();
   showLoader();
  currentPage++;
   try {
@@ -101,7 +101,9 @@ refs.loadMoreBtn.addEventListener('click', async () => {
       
 
       if (data.hits.length == 0 || currentPage >= maxPage) {
-          
+          imagesTemplate(data.hits);
+           lightbox.refresh();
+      hideLoader();
         iziToast.info({
         title: 'Info',
         message: "We're sorry, but you've reached the end of search results.",
@@ -112,9 +114,9 @@ refs.loadMoreBtn.addEventListener('click', async () => {
       hideLoadMore();
       return;
     }
-      imagesTemplate(data.hits);
-      lightbox.refresh();
-      hideLoader();
+    //   imagesTemplate(data.hits);
+    //   lightbox.refresh();
+    //   hideLoader();
       showLoadMore();
       
     checkEndPages(currentPage, maxPage);
