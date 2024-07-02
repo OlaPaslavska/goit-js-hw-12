@@ -29,10 +29,10 @@ const lightbox = new SimpleLightbox('.gallery a', {
 
 refs.form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
-     inputValue = refs.input.value.trim();
-  currentPage = 1;
+    inputValue = refs.input.value.trim();
+    currentPage = 1;
 
+    hideLoadMore();
 // Очищення галереї перед новими результатами
   if (inputValue === '') {
     refs.gallery.innerHTML = ' ';
