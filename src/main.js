@@ -98,37 +98,37 @@ refs.loadMoreBtn.addEventListener('click', async () => {
  currentPage++;
     try {
         const data = await getImages(inputValue, currentPage, perPage);
-
+       // Перевіряємо, чи є дані для відображення
         if (data.hits.length == 0 || currentPage >= maxPage) {
-        hideLoadMore();
             iziToast.info({
                 title: 'Info',
                 message: "We're sorry, but you've reached the end of search results.",
                 position: 'topCenter',
                 timeout: 5000
             });
-            //   hideLoader();
-            hideLoadMore();
-    }else{
+              hideLoader();
+            
+        } else {
+        // Якщо є дані для відображення
        imagesTemplate(data.hits);
       lightbox.refresh();
-      showLoadMore();
     }
-    //   showLoadMore();
-      hideLoader();
+       // Якщо не остання сторінка, показуємо кнопку "Load More"
+      if (currentPage < maxPage) {
+        showLoadMore();
+      }
+      hideLoader(); // Ховаємо завантажувач
+    }
     // checkEndPages(currentPage, maxPage);
-    skipOldElement();
-  } catch (error) {
-    refs.gallery.innerHTML = ' ';
+    // skipOldElement();
+   catch (error) {
     iziToast.error({
       title: 'Error',
-      message: `${error}`,
-      layout: 2,
-      displayMode: 'once',
-      backgroundColor: '#ef4040',
-      progressBarColor: '#B51B1B',
+      message: `Error loading images: ${error}`,
       position: 'topRight',
+      timeout: 5000
     });
+    hideLoader(); // При помилці також ховаємо завантажувач
   }
 
 });
