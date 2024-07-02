@@ -49,13 +49,12 @@ refs.form.addEventListener('submit', async (e) => {
   }
 
   showLoader();
-  
   refs.gallery.innerHTML = ' ';
-
+   hideLoadMore();
   try {
     const data = await getImages(inputValue, currentPage, perPage);
     maxPage = Math.ceil(data.totalHits / perPage);
-    if (maxPage === 0) {
+    if (data.hits.length === 0) {
       iziToast.error({
         message:
           'Sorry, there are no images matching your search query. Please try again!',
@@ -65,17 +64,20 @@ refs.form.addEventListener('submit', async (e) => {
         progressBarColor: '#B51B1B',
         position: 'topRight',
       });
-      refs.form.reset();
       hideLoader();
+      refs.form.reset();
       return;
     }
 
-    hideLoader();
-    refs.form.reset();
-
     imagesTemplate(data.hits);
     lightbox.refresh();
-    showLoadMore();
+     if (currentPage < maxPage) {
+            showLoadMore();
+        } else {
+            hideLoadMore();
+        }
+        hideLoader();
+        refs.form.reset();
   } catch (error) {
     iziToast.error({
       title: 'Error',
@@ -90,44 +92,44 @@ refs.form.addEventListener('submit', async (e) => {
 });
 
 refs.loadMoreBtn.addEventListener('click', async () => {
-  hideLoadMore();
+//   hideLoadMore();
   showLoader();
  currentPage++;
   try {
-    // currentPage++;
-
       const data = await getImages(inputValue, currentPage, perPage);
       
-      // Обрахування максимальної кількості сторінок
-     maxPage = Math.ceil(data.totalHits / perPage);
+    //   // Обрахування максимальної кількості сторінок
+    //  maxPage = Math.ceil(data.totalHits / perPage);
 
       if (data.hits.length == 0 || currentPage >= maxPage) {
-          imagesTemplate(data.hits);
-           lightbox.refresh();
-          hideLoader();
-        iziToast.info({
-        title: 'Info',
-        message: "We're sorry, but you've reached the end of search results.",
-        position: 'topCenter',
-        timeout: 5000
-      });
-    //   hideLoader();
-      hideLoadMore();
-      return;
-    }
-      imagesTemplate(data.hits);
+          //   imagesTemplate(data.hits);
+          //    lightbox.refresh();
+          //   hideLoader();
+          iziToast.info({
+              title: 'Info',
+              message: "We're sorry, but you've reached the end of search results.",
+              position: 'topCenter',
+              timeout: 5000
+          });
+          //   hideLoader();
+          hideLoadMore();
+      }
+    //   return;
+    // }
+    //   imagesTemplate(data.hits);
+    //   lightbox.refresh();
+      //   hideLoader();
+      else{
+       imagesTemplate(data.hits);
       lightbox.refresh();
-      hideLoader();
-      if (currentPage < maxPage) {
       showLoadMore();
     }
     //   showLoadMore();
-      
-    checkEndPages(currentPage, maxPage);
+      hideLoader();
+    // checkEndPages(currentPage, maxPage);
     skipOldElement();
   } catch (error) {
     refs.gallery.innerHTML = ' ';
-
     iziToast.error({
       title: 'Error',
       message: `${error}`,

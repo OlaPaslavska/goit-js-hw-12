@@ -72,20 +72,20 @@ export function hideLoadMore() {
 }
 
 // Ця функція перевіряє, чи поточна сторінка (currentPage) перевищує або дорівнює максимальній сторінці (maxPage)
-export function checkEndPages(currentPage, maxPage, perPage) {
-  if (currentPage >= maxPage || data.hits.length < perPage) {
-    hideLoadMore();
+// export function checkEndPages(currentPage, maxPage, perPage) {
+//   if (currentPage >= maxPage || data.hits.length < perPage) {
+//     hideLoadMore();
 
-    if (maxPage) {
-      iziToast.info({
-        title: 'The end!',
-        message: "We're sorry, but you've reached the end of search results.",
-      });
-    }
-  } else {
-    showLoadMore();
-  }
-}
+//     if (maxPage) {
+//       iziToast.info({
+//         title: 'The end!',
+//         message: "We're sorry, but you've reached the end of search results.",
+//       });
+//     }
+//   } else {
+//     showLoadMore();
+//   }
+// }
 export function skipOldElement(x = 0, y = 0) {
   const liEl = refs.gallery.children[0];
   const height = liEl.getBoundingClientRect().height;
