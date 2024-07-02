@@ -105,6 +105,7 @@ refs.loadMoreBtn.addEventListener('click', async () => {
                 timeout: 5000
             });
             hideLoader();
+             hideLoadMore();
         } else {
             // Якщо є дані для відображення
             imagesTemplate(data.hits);
