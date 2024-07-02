@@ -99,7 +99,7 @@ refs.loadMoreBtn.addEventListener('click', async () => {
         const data = await getImages(inputValue, currentPage, perPage);
 
         if (data.hits.length == 0 || currentPage >= maxPage) {
-        
+        hideLoadMore();
             iziToast.info({
                 title: 'Info',
                 message: "We're sorry, but you've reached the end of search results.",
