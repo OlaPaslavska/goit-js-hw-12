@@ -99,7 +99,7 @@ refs.loadMoreBtn.addEventListener('click', async () => {
       const data = await getImages(inputValue, currentPage, perPage);
       
     //   // Обрахування максимальної кількості сторінок
-    //  maxPage = Math.ceil(data.totalHits / perPage);
+     maxPage = Math.ceil(data.totalHits / perPage);
 
       if (data.hits.length == 0 || currentPage >= maxPage) {
           //   imagesTemplate(data.hits);
