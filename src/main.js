@@ -104,7 +104,8 @@ refs.loadMoreBtn.addEventListener('click', async () => {
       if (data.hits.length == 0 || currentPage >= maxPage) {
           imagesTemplate(data.hits);
            lightbox.refresh();
-      hideLoader();
+          //   hideLoader();
+           hideLoadMore();
         iziToast.info({
         title: 'Info',
         message: "We're sorry, but you've reached the end of search results.",
