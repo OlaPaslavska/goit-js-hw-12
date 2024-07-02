@@ -47,6 +47,7 @@ refs.form.addEventListener('submit', async (e) => {
     refs.form.reset();
     return;
   }
+
   showLoader();
   refs.gallery.innerHTML = ' ';
    hideLoadMore();
@@ -64,6 +65,7 @@ refs.form.addEventListener('submit', async (e) => {
         position: 'topRight',
       });
         hideLoader();
+       
       refs.form.reset();
       return;
     }
@@ -91,14 +93,14 @@ refs.form.addEventListener('submit', async (e) => {
 });
 
 refs.loadMoreBtn.addEventListener('click', async () => {
-//   hideLoadMore();
+  hideLoadMore();
   showLoader();
  currentPage++;
     try {
         const data = await getImages(inputValue, currentPage, perPage);
 
         if (data.hits.length == 0 || currentPage >= maxPage) {
-            hideLoadMore();
+        hideLoadMore();
             iziToast.info({
                 title: 'Info',
                 message: "We're sorry, but you've reached the end of search results.",
@@ -107,16 +109,13 @@ refs.loadMoreBtn.addEventListener('click', async () => {
             });
             //   hideLoader();
             hideLoadMore();
-        } else {
-            imagesTemplate(data.hits);
-            lightbox.refresh();
-            //   showLoadMore();
-            if (currentPage < maxPage) {
-            
-                //   showLoadMore();
-                hideLoader();
-            }
-        }
+    }else{
+       imagesTemplate(data.hits);
+      lightbox.refresh();
+      showLoadMore();
+    }
+    //   showLoadMore();
+      hideLoader();
     // checkEndPages(currentPage, maxPage);
     skipOldElement();
   } catch (error) {
