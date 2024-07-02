@@ -97,7 +97,7 @@ refs.loadMoreBtn.addEventListener('click', async () => {
     try {
         const data = await getImages(inputValue, currentPage, perPage);
        // Перевіряємо, чи є дані для відображення
-        if (data.hits.length == 0 || currentPage >= maxPage) {
+        if (data.hits.length == 0 || currentPage > maxPage) {
             iziToast.info({
                 title: 'Info',
                 message: "We're sorry, but you've reached the end of search results.",
