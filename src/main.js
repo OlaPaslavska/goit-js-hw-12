@@ -49,7 +49,7 @@ refs.form.addEventListener('submit', async (e) => {
 
   showLoader();
   refs.gallery.innerHTML = ' ';
-//    hideLoadMore();
+   hideLoadMore();
   try {
     const data = await getImages(inputValue, currentPage, perPage);
     maxPage = Math.ceil(data.totalHits / perPage);
@@ -63,9 +63,10 @@ refs.form.addEventListener('submit', async (e) => {
         progressBarColor: '#B51B1B',
         position: 'topRight',
       });
-        hideLoader();
+        // hideLoader();
        
-      refs.form.reset();
+        refs.form.reset();
+        hideLoader();
       return;
     }
 
