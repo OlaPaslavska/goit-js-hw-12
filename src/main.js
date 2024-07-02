@@ -92,34 +92,23 @@ refs.form.addEventListener('submit', async (e) => {
 });
 
 refs.loadMoreBtn.addEventListener('click', async () => {
-//   hideLoadMore();
+  hideLoadMore();
   showLoader();
  currentPage++;
-  try {
-      const data = await getImages(inputValue, currentPage, perPage);
-      
-    //   // Обрахування максимальної кількості сторінок
-     maxPage = Math.ceil(data.totalHits / perPage);
+    try {
+        const data = await getImages(inputValue, currentPage, perPage);
 
-      if (data.hits.length == 0 || currentPage >= maxPage) {
-            imagesTemplate(data.hits);
-             lightbox.refresh();
-            hideLoader();
-          iziToast.info({
-              title: 'Info',
-              message: "We're sorry, but you've reached the end of search results.",
-              position: 'topCenter',
-              timeout: 5000
-          });
-          //   hideLoader();
-          hideLoadMore();
-      }
-    //   return;
-    // }
-    //   imagesTemplate(data.hits);
-    //   lightbox.refresh();
-      //   hideLoader();
-      else{
+        if (data.hits.length == 0 || currentPage >= maxPage) {
+        
+            iziToast.info({
+                title: 'Info',
+                message: "We're sorry, but you've reached the end of search results.",
+                position: 'topCenter',
+                timeout: 5000
+            });
+            //   hideLoader();
+            hideLoadMore();
+    }else{
        imagesTemplate(data.hits);
       lightbox.refresh();
       showLoadMore();
