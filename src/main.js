@@ -104,22 +104,19 @@ refs.loadMoreBtn.addEventListener('click', async () => {
                 position: 'topCenter',
                 timeout: 5000
             });
-              hideLoader();
-            
+            hideLoader();
         } else {
-        // Якщо є дані для відображення
-       imagesTemplate(data.hits);
-      lightbox.refresh();
-    }
-       // Якщо не остання сторінка, показуємо кнопку "Load More"
-      if (currentPage < maxPage) {
-        showLoadMore();
-      }
-      hideLoader(); // Ховаємо завантажувач
-    }
-    // checkEndPages(currentPage, maxPage);
-    // skipOldElement();
-   catch (error) {
+            // Якщо є дані для відображення
+            imagesTemplate(data.hits);
+            lightbox.refresh();
+            // Якщо не остання сторінка, показуємо кнопку "Load More"
+            if (currentPage < maxPage) {
+                showLoadMore();
+            }
+            hideLoader(); // Ховаємо завантажувач
+            skipOldElement();
+        }
+    }catch (error) {
     iziToast.error({
       title: 'Error',
       message: `Error loading images: ${error}`,
@@ -128,5 +125,4 @@ refs.loadMoreBtn.addEventListener('click', async () => {
     });
     hideLoader(); // При помилці також ховаємо завантажувач
   }
-
 });
