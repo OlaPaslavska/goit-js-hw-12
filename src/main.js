@@ -47,7 +47,6 @@ refs.form.addEventListener('submit', async (e) => {
     refs.form.reset();
     return;
   }
-
   showLoader();
   refs.gallery.innerHTML = ' ';
    hideLoadMore();
@@ -65,7 +64,6 @@ refs.form.addEventListener('submit', async (e) => {
         position: 'topRight',
       });
         hideLoader();
-        hideLoadMore();
       refs.form.reset();
       return;
     }
