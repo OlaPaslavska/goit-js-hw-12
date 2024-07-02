@@ -124,7 +124,7 @@ refs.loadMoreBtn.addEventListener('click', async () => {
     //   showLoadMore();
       
     checkEndPages(currentPage, maxPage);
-    // skipOldElement();
+    skipOldElement();
   } catch (error) {
     refs.gallery.innerHTML = ' ';
 
