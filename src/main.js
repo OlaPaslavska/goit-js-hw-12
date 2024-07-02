@@ -63,10 +63,8 @@ refs.form.addEventListener('submit', async (e) => {
         progressBarColor: '#B51B1B',
         position: 'topRight',
       });
-        // hideLoader();
-       
-        refs.form.reset();
         hideLoader();
+        refs.form.reset();
       return;
     }
 
