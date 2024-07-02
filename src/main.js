@@ -32,7 +32,6 @@ refs.form.addEventListener('submit', async (e) => {
     inputValue = refs.input.value.trim();
     currentPage = 1;
 
-    hideLoadMore();
 // Очищення галереї перед новими результатами
   if (inputValue === '') {
     refs.gallery.innerHTML = ' ';
@@ -50,7 +49,7 @@ refs.form.addEventListener('submit', async (e) => {
 
   showLoader();
   refs.gallery.innerHTML = ' ';
-   hideLoadMore();
+//    hideLoadMore();
   try {
     const data = await getImages(inputValue, currentPage, perPage);
     maxPage = Math.ceil(data.totalHits / perPage);
